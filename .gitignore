@@ -1,0 +1,13 @@
+# Archivos internos que NO deben publicarse en GitHub Pages
+*.docx
+correo promocional crn
+.DS_Store
+
+# Fuentes SVG (en el correo se usan los PNG)
+assets/email/*.svg
+assets/dossiers/
+
+# Intermedios de los dossiers (solo publicamos los PDF finales)
+dossier-styles.css
+dossier-*.html
+dossier-ia-con-proposito.pdf

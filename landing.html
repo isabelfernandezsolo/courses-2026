@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso a los dossiers · Programas FP</title>
+  <style>
+    * { box-sizing:border-box; }
+    body {
+      margin:0; padding:24px 12px; min-height:100vh;
+      background:#f5f1e8; color:#1f2f2d;
+      font-family:Arial, Helvetica, sans-serif;
+      display:flex; align-items:flex-start; justify-content:center;
+    }
+    .tarjeta {
+      width:100%; max-width:520px; background:#ffffff;
+      border:1px solid #dccfb4; border-radius:8px; overflow:hidden;
+    }
+    .cabecera { padding:26px 30px 18px; border-bottom:1px solid #eadfca; }
+    .autora { margin:0; font-size:13px; color:#b8872f; font-weight:bold; }
+    h1 {
+      margin:6px 0 8px; font-family:Georgia,'Times New Roman',serif;
+      font-size:26px; line-height:32px; color:#0d4239;
+    }
+    .subtitulo { margin:0; font-size:15px; line-height:23px; color:#3b4b48; }
+    .cuerpo { padding:24px 30px 30px; }
+    .programa {
+      margin:0 0 20px; padding:12px 14px; background:#f5f1e8;
+      border-left:4px solid #d6af61; font-size:15px; line-height:22px; color:#0d4239;
+    }
+    label { display:block; margin:0 0 6px; font-size:14px; font-weight:bold; color:#0d4239; }
+    input {
+      width:100%; padding:11px 12px; margin:0 0 16px;
+      font-size:15px; border:1px solid #cbbfa3; border-radius:5px;
+    }
+    input:focus { outline:none; border-color:#b8872f; }
+    input[type=checkbox] { width:auto; margin:3px 9px 0 0; flex:0 0 auto; }
+    .consentimiento { display:flex; align-items:flex-start; margin:4px 0 18px; }
+    .label-checkbox { font-weight:normal; font-size:13px; line-height:19px; color:#3b4b48; }
+    .label-checkbox a { color:#0d4239; }
+    .privacidad {
+      margin:18px 0 0; padding:14px 16px; background:#faf7ef;
+      border:1px solid #eadfca; border-radius:6px;
+      font-size:11.5px; line-height:17px; color:#6b7672;
+    }
+    .privacidad p { margin:0 0 6px; }
+    .privacidad strong { color:#3b4b48; }
+    .boton {
+      width:100%; padding:13px; font-size:16px; font-weight:bold;
+      color:#fff; background:#0d4239; border:0; border-radius:5px; cursor:pointer;
+    }
+    .boton:disabled { opacity:.6; cursor:default; }
+    .legal { margin:14px 0 0; font-size:12px; line-height:18px; color:#6b7672; }
+    .gracias { display:none; text-align:center; padding:10px 0; }
+    .gracias h2 { font-family:Georgia,serif; color:#0d4239; }
+    .pie { padding:16px 30px; background:#0d4239; color:#fff; font-size:13px; }
+    .pie a { color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="tarjeta">
+    <div class="cabecera">
+      <p class="autora">Isabel Fernández Solo de Zaldívar</p>
+      <h1>Programas estratégicos para Formación Profesional</h1>
+      <p class="subtitulo">Déjanos tus datos y accede al dossier al instante.</p>
+    </div>
+
+    <div class="cuerpo">
+      <p class="programa" id="programaTexto">Solicitas información sobre los programas.</p>
+
+      <form id="formulario">
+        <label for="nombre">Nombre y centro</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Ej.: María López · CIFP …">
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+
+        <div class="consentimiento">
+          <input type="checkbox" id="acepto" name="acepto" required>
+          <label for="acepto" class="label-checkbox">
+            He leído la información sobre protección de datos y <strong>consiento</strong> que
+            Isabel Fernández Solo de Zaldívar trate mis datos para enviarme información sobre
+            estos programas formativos. *
+          </label>
+        </div>
+
+        <button type="submit" class="boton" id="enviar">Acceder al dossier</button>
+
+        <div class="privacidad">
+          <p><strong>Información básica sobre protección de datos (RGPD)</strong></p>
+          <p><strong>Responsable:</strong> Isabel Fernández Solo de Zaldívar (isabelfernandezsolo@gmail.com).</p>
+          <p><strong>Finalidad:</strong> gestionar tu solicitud y remitirte información sobre los programas formativos.</p>
+          <p><strong>Legitimación:</strong> tu consentimiento, que prestas al marcar la casilla.</p>
+          <p><strong>Conservación:</strong> hasta que solicites la baja o retires el consentimiento.</p>
+          <p><strong>Destinatarios:</strong> no se ceden datos a terceros. Se almacenan en Google
+             Workspace, que actúa como encargado del tratamiento.</p>
+          <p><strong>Derechos:</strong> puedes acceder, rectificar y suprimir tus datos, así como
+             oponerte o solicitar su portabilidad, escribiendo a isabelfernandezsolo@gmail.com.</p>
+        </div>
+      </form>
+
+      <div class="gracias" id="gracias">
+        <h2>¡Gracias!</h2>
+        <p id="graciasTexto">Hemos recibido tus datos. Nos pondremos en contacto contigo.</p>
+      </div>
+    </div>
+
+    <div class="pie">
+      <a href="mailto:isabelfernandezsolo@gmail.com">isabelfernandezsolo@gmail.com</a>
+    </div>
+  </div>
+
+  <script>
+    // ====== CONFIGURACIÓN ======
+    // 1) Pega aquí la URL del Web App de Google Apps Script (ver FASE2.md, paso 3).
+    var APPS_SCRIPT_URL = "PEGA_AQUI_URL_DEL_APPS_SCRIPT";
+
+    var BASE = "https://isabelfernandezsolo.github.io/landing-educacion";
+
+    // Mapa: ?programa=clave  ->  { pdf, etiqueta }
+    var PROGRAMAS = {
+      "investigacion": {
+        pdf: BASE + "/dossier-investigacion-aplicada.pdf",
+        etiqueta: "Investigación aplicada en Formación Profesional"
+      },
+      "ia-proposito": {
+        pdf: BASE + "/dossier-ia-con-proposito-revisado.pdf",
+        etiqueta: "IA con propósito en Formación Profesional"
+      },
+      "gestion": {
+        pdf: BASE + "/dossier-ia-gestion-procesos.pdf",
+        etiqueta: "IA para gestión y mejora de procesos del centro"
+      }
+    };
+    // ====== FIN CONFIGURACIÓN ======
+
+    function getParam(n) {
+      return new URLSearchParams(window.location.search).get(n) || "";
+    }
+
+    var clave = getParam("programa");
+    var info = PROGRAMAS[clave] || null; // null = solicitud de información general
+    var nombrePrograma = info ? info.etiqueta : "Información general sobre los programas";
+
+    if (info) {
+      document.getElementById("programaTexto").textContent =
+        "Vas a descargar el dossier: " + info.etiqueta + ".";
+    } else {
+      document.getElementById("enviar").textContent = "Enviar solicitud";
+    }
+
+    document.getElementById("formulario").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var btn = document.getElementById("enviar");
+      btn.disabled = true;
+      btn.textContent = "Enviando…";
+
+      var datos = {
+        nombre: document.getElementById("nombre").value,
+        email: document.getElementById("email").value,
+        programa: nombrePrograma,
+        consentimiento: document.getElementById("acepto").checked ? "Sí" : "No"
+      };
+
+      function continuar() {
+        if (info) {
+          // Redirige a la descarga del PDF
+          window.location.href = info.pdf;
+        } else {
+          // Solicitud general: mostrar agradecimiento
+          document.getElementById("formulario").style.display = "none";
+          document.getElementById("programaTexto").style.display = "none";
+          document.getElementById("gracias").style.display = "block";
+        }
+      }
+
+      // no-cors: el navegador no puede leer la respuesta, pero la fila se guarda igual.
+      // Si APPS_SCRIPT_URL aún es el placeholder, falla -> catch -> igualmente continúa.
+      fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(datos)
+      }).then(continuar).catch(continuar);
+    });
+  </script>
+</body>
+</html>
