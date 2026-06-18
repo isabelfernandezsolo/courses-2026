@@ -1,7 +1,7 @@
 # Despliegue del correo — guía
 
 URL pública final (GitHub Pages):
-**https://isabelfernandezsolo.github.io/landing-educacion/**
+**https://isabelfernandezsolo.github.io/courses-2026/**
 
 Los archivos del correo (imágenes y PDFs) ya apuntan a esa URL.
 
@@ -26,10 +26,10 @@ git commit -m "Correo y dossiers para GitHub Pages"
 git branch -M main
 
 # Opción A — con gh (logueado como isabelfernandezsolo):
-gh repo create landing-educacion --public --source=. --push
+gh repo create courses-2026 --public --source=. --push
 
 # Opción B — repo creado a mano en github.com (vacío):
-git remote add origin https://github.com/isabelfernandezsolo/landing-educacion.git
+git remote add origin https://github.com/isabelfernandezsolo/courses-2026.git
 git push -u origin main
 ```
 
@@ -39,8 +39,8 @@ En el repo: **Settings → Pages → Build and deployment → Source: Deploy fro
 → Branch: `main` / carpeta `/ (root)` → **Save**.
 
 Espera 1–2 min. Comprueba que estos enlaces abren:
-- https://isabelfernandezsolo.github.io/landing-educacion/dossier-investigacion-aplicada.pdf
-- https://isabelfernandezsolo.github.io/landing-educacion/assets/email/programa-investigacion.png
+- https://isabelfernandezsolo.github.io/courses-2026/dossier-investigacion-aplicada.pdf
+- https://isabelfernandezsolo.github.io/courses-2026/assets/email/programa-investigacion.png
 
 ### 3. Enviar el correo
 

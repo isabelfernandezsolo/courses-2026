@@ -53,7 +53,7 @@ por la URL `/exec` que copiaste. Guarda y sube los cambios a GitHub (`git add . 
 
 ## Paso 5 — Probar
 
-1. Abre `https://isabelfernandezsolo.github.io/landing-educacion/landing.html?programa=investigacion`
+1. Abre `https://isabelfernandezsolo.github.io/courses-2026/landing.html?programa=investigacion`
 2. Rellena el formulario, marca el consentimiento y envía.
 3. Comprueba que:
    - Aparece una fila nueva en el Sheet (con la fecha, datos y "Sí" en consentimiento).
@@ -75,4 +75,4 @@ por la URL `/exec` que copiaste. Guarda y sube los cambios a GitHub (`git add . 
 ## Si prefieres que algún dossier se descargue SIN formulario
 
 En `email-comercial.html`, en ese botón, vuelve a poner la URL directa al PDF, p. ej.:
-`https://isabelfernandezsolo.github.io/landing-educacion/dossier-investigacion-aplicada.pdf`
+`https://isabelfernandezsolo.github.io/courses-2026/dossier-investigacion-aplicada.pdf`
